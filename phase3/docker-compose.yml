@@ -1,0 +1,18 @@
+version: "3"
+
+services:
+  drupal:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: quirosfelipe/phase3
+    ports:
+      - "8080:80"
+  postgres:
+    image: postgres:9.6
+    environment:
+      - POSTGRES_PASSWORD=password
+    volumes:
+      - drupal-data:/var/lib/postgresql/data
+volumes:
+  drupal-data:
